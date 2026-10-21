@@ -80,18 +80,28 @@ suivre la vitesse à laquelle la source change. -->
 I looked at the route with the largest average delay on the dashboard: line T1
 at about 311 seconds. Only one trip was observed for this line, so the average
 is based on a single bus. It was late in the evening, with only 7 routes
-reporting. [TO COMPLETE: what I found on SETRAM's website or from common sense,
-for example a real disruption or nothing special.] My best guess is that this
-is a data artifact of a very small sample (one trip), not a real network
-problem, because an average over one bus is not reliable.
-<!-- J'ai regardé la ligne avec le plus grand retard moyen sur le tableau de
-bord : la ligne T1, environ 311 secondes. Un seul trajet a été observé pour
-cette ligne, donc la moyenne repose sur un seul bus. C'était tard le soir, avec
-seulement 7 lignes qui remontent des données. [À COMPLÉTER : ce que j'ai trouvé
-sur le site de SETRAM ou par bon sens, par exemple une vraie perturbation ou
-rien de particulier.] Ma meilleure hypothèse est qu'il s'agit d'un artefact de
-données dû à un très petit échantillon (un seul trajet), pas d'un vrai problème
-du réseau, car une moyenne sur un seul bus n'est pas fiable. -->
+reporting. In my history file, T1 has exactly the same values in two snapshots
+taken about 38 minutes apart (1 trip, 24 updates, 17 skipped stops, 311.1 s
+average delay, 450 s maximum). A real bus in service would not give identical
+numbers, so the data looks frozen. I looked for information about a disruption
+on line T1 that evening and found none (I could not read SETRAM's live traffic
+page, and search results only showed older articles). My best guess is that
+this is a data artifact (a frozen trip or a stuck bus in the feed) based on a
+very small sample, not a real network problem.
+<!-- J'ai regardé la ligne avec le plus grand retard moyen sur le tableau de bord :
+la ligne T1, environ 311 secondes. Un seul trajet a été observé pour cette
+ligne, donc la moyenne repose sur un seul bus. C'était tard le soir, avec
+seulement 7 lignes qui remontent des données. Dans mon fichier d'historique,
+T1 a exactement les mêmes valeurs dans deux instantanés pris à environ 38
+minutes d'écart (1 trajet, 24 mises à jour, 17 arrêts supprimés, 311,1 s de
+retard moyen, 450 s au maximum). Un vrai bus en service ne donnerait pas des
+chiffres identiques, donc les données semblent figées. J'ai cherché une
+information sur une perturbation de la ligne T1 ce soir-là et je n'en ai pas
+trouvé (je n'ai pas pu lire la page d'info trafic de SETRAM en direct, et les
+résultats de recherche ne montraient que d'anciens articles). Ma meilleure
+hypothèse est qu'il s'agit d'un artefact de données (un trajet figé ou un bus
+bloqué dans le flux) reposant sur un très petit échantillon, pas d'un vrai
+problème du réseau. -->
 ## Reflection 8: where population misleads as a demand proxy
 A small commune can have a low population but high transport demand if it
 hosts a big employer, a hospital, a school or a shopping area: many people
