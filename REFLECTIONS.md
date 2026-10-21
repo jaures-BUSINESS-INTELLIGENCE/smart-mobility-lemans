@@ -45,3 +45,18 @@ convient à Git. Mais avec une ligne par ligne de bus, il est plus difficile de
 répondre à « quels arrêts précis sont en retard de façon répétée ? » ou
 « les retards s'accumulent-ils le long d'une ligne ? », car le détail par arrêt
 est perdu. -->
+## Reflection 5: color encoding of delays
+The current rule shows a very early bus as green, but a bus that leaves early
+can strand a waiting passenger just like a late bus. I would use a scale
+centered on zero: green for roughly on time (for example from -60 s to
++180 s), orange or red for late, and purple or blue for very early, with the
+strongest color at both extremes. With this rule, a route with a large
+negative delay would be flagged as a problem, whereas the current chart shows
+it as the best route.
+<!-- La règle actuelle affiche un bus très en avance en vert, mais un bus qui
+part trop tôt peut laisser un passager à quai, comme un bus en retard.
+J'utiliserais une échelle centrée sur zéro : vert pour à peu près à l'heure
+(par exemple de -60 s à +180 s), orange ou rouge pour en retard, violet ou bleu
+pour très en avance, avec la couleur la plus forte aux deux extrêmes. Avec
+cette règle, une ligne avec un grand retard négatif serait signalée comme un
+problème, alors que le graphique actuel la montre comme la meilleure ligne. -->
