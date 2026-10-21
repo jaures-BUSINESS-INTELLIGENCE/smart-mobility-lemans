@@ -1,0 +1,166 @@
+{
+  "generated_at": "2026-10-21T20:59:42Z",
+  "metric_label": "Scheduled stop-visits per weekday per 1,000 residents (population = proxy for demand, not measured ridership)",
+  "rows": [
+    {
+      "commune": "La-Chapelle-Saint-Aubin",
+      "population": 2319,
+      "n_stops": 53,
+      "stop_visits_weekday": 2343,
+      "visits_per_1000_residents": 1010.3,
+      "busiest_stop_share": 0.035
+    },
+    {
+      "commune": "Coulaines",
+      "population": 8226,
+      "n_stops": 105,
+      "stop_visits_weekday": 6267,
+      "visits_per_1000_residents": 761.9,
+      "busiest_stop_share": 0.018
+    },
+    {
+      "commune": "Rouillon",
+      "population": 2666,
+      "n_stops": 41,
+      "stop_visits_weekday": 1906,
+      "visits_per_1000_residents": 714.9,
+      "busiest_stop_share": 0.099
+    },
+    {
+      "commune": "Allonnes",
+      "population": 10846,
+      "n_stops": 69,
+      "stop_visits_weekday": 4017,
+      "visits_per_1000_residents": 370.4,
+      "busiest_stop_share": 0.04
+    },
+    {
+      "commune": "Arnage",
+      "population": 5548,
+      "n_stops": 34,
+      "stop_visits_weekday": 1638,
+      "visits_per_1000_residents": 295.2,
+      "busiest_stop_share": 0.118
+    },
+    {
+      "commune": "Yvre-l-Eveque",
+      "population": 4269,
+      "n_stops": 22,
+      "stop_visits_weekday": 750,
+      "visits_per_1000_residents": 175.7,
+      "busiest_stop_share": 0.068
+    },
+    {
+      "commune": "Saint-Saturnin",
+      "population": 2864,
+      "n_stops": 21,
+      "stop_visits_weekday": 490,
+      "visits_per_1000_residents": 171.1,
+      "busiest_stop_share": 0.116
+    },
+    {
+      "commune": "La-Milesse",
+      "population": 2650,
+      "n_stops": 15,
+      "stop_visits_weekday": 425,
+      "visits_per_1000_residents": 160.4,
+      "busiest_stop_share": 0.202
+    },
+    {
+      "commune": "Sarge-les-le-Mans",
+      "population": 3941,
+      "n_stops": 15,
+      "stop_visits_weekday": 630,
+      "visits_per_1000_residents": 159.9,
+      "busiest_stop_share": 0.067
+    },
+    {
+      "commune": "Le Mans",
+      "population": 148876,
+      "n_stops": 329,
+      "stop_visits_weekday": 22900,
+      "visits_per_1000_residents": 153.8,
+      "busiest_stop_share": 0.011
+    },
+    {
+      "commune": "Ruaudin",
+      "population": 3542,
+      "n_stops": 22,
+      "stop_visits_weekday": 536,
+      "visits_per_1000_residents": 151.3,
+      "busiest_stop_share": 0.099
+    },
+    {
+      "commune": "Champagne",
+      "population": 3728,
+      "n_stops": 19,
+      "stop_visits_weekday": 425,
+      "visits_per_1000_residents": 114.0,
+      "busiest_stop_share": 0.061
+    },
+    {
+      "commune": "Mulsanne",
+      "population": 5352,
+      "n_stops": 18,
+      "stop_visits_weekday": 525,
+      "visits_per_1000_residents": 98.1,
+      "busiest_stop_share": 0.08
+    },
+    {
+      "commune": "Aigne",
+      "population": 1724,
+      "n_stops": 6,
+      "stop_visits_weekday": 138,
+      "visits_per_1000_residents": 80.0,
+      "busiest_stop_share": 0.167
+    },
+    {
+      "commune": "Pruille-le-Chetif",
+      "population": 1357,
+      "n_stops": 8,
+      "stop_visits_weekday": 88,
+      "visits_per_1000_residents": 64.8,
+      "busiest_stop_share": 0.125
+    },
+    {
+      "commune": "Fay",
+      "population": 770,
+      "n_stops": 3,
+      "stop_visits_weekday": 44,
+      "visits_per_1000_residents": 57.1,
+      "busiest_stop_share": 0.5
+    },
+    {
+      "commune": "Trange",
+      "population": 1678,
+      "n_stops": 6,
+      "stop_visits_weekday": 87,
+      "visits_per_1000_residents": 51.8,
+      "busiest_stop_share": 0.172
+    },
+    {
+      "commune": "Chaufour-Notre-Dame",
+      "population": 1187,
+      "n_stops": 3,
+      "stop_visits_weekday": 58,
+      "visits_per_1000_residents": 48.9,
+      "busiest_stop_share": 0.5
+    },
+    {
+      "commune": "Saint-Georges-du-Bois",
+      "population": 2308,
+      "n_stops": 7,
+      "stop_visits_weekday": 96,
+      "visits_per_1000_residents": 41.6,
+      "busiest_stop_share": 0.25
+    },
+    {
+      "commune": "Fatines",
+      "population": 937,
+      "n_stops": 2,
+      "stop_visits_weekday": 38,
+      "visits_per_1000_residents": 40.6,
+      "busiest_stop_share": 0.658
+    }
+  ]
+}
