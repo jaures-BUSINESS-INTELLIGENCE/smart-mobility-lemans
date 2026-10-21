@@ -76,3 +76,19 @@ retards en temps réel rendrait l'image temps réel inutile : les retards durent
 des minutes ou des heures, donc un instantané par mois montrerait un moment au
 hasard et aucun motif. L'erreur existe dans les deux sens : le calendrier doit
 suivre la vitesse à laquelle la source change. -->
+## Reflection 7: sanity check against reality
+I looked at the route with the largest average delay on the dashboard: line T1
+at about 311 seconds. Only one trip was observed for this line, so the average
+is based on a single bus. It was late in the evening, with only 7 routes
+reporting. [TO COMPLETE: what I found on SETRAM's website or from common sense,
+for example a real disruption or nothing special.] My best guess is that this
+is a data artifact of a very small sample (one trip), not a real network
+problem, because an average over one bus is not reliable.
+<!-- J'ai regardé la ligne avec le plus grand retard moyen sur le tableau de
+bord : la ligne T1, environ 311 secondes. Un seul trajet a été observé pour
+cette ligne, donc la moyenne repose sur un seul bus. C'était tard le soir, avec
+seulement 7 lignes qui remontent des données. [À COMPLÉTER : ce que j'ai trouvé
+sur le site de SETRAM ou par bon sens, par exemple une vraie perturbation ou
+rien de particulier.] Ma meilleure hypothèse est qu'il s'agit d'un artefact de
+données dû à un très petit échantillon (un seul trajet), pas d'un vrai problème
+du réseau, car une moyenne sur un seul bus n'est pas fiable. -->
