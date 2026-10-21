@@ -6,7 +6,7 @@ import pandas as pd
 GTFS_URL = "https://www.data.gouv.fr/api/1/datasets/r/5339d96c-6d20-4a01-939a-40f7b56d6cc1"
 
 def haversine_km(lat1, lon1, lat2, lon2):
-    # Distance en km entre deux points GPS (même formule qu'au TD1)
+    # Distance en km entre deux points GPS 
     r = 6371
     phi1, phi2 = math.radians(lat1), math.radians(lat2)
     dphi = math.radians(lat2 - lat1)
@@ -40,7 +40,7 @@ def nearest_commune(lat, lon, communes):
     return best_name
 
 def main():
-    # Lire les communes (étape 2)
+    # Lire les communes 
     communes_df = pd.read_csv("data/reference/communes.csv")
     communes = communes_df.to_dict("records")
 
