@@ -1,0 +1,27 @@
+name: Build static reference
+
+"on":
+  workflow_dispatch: {}      # lancement manuel
+  schedule:
+    - cron: "0 4 1 * *"      # le 1er de chaque mois à 04:00 UTC
+
+permissions:
+  contents: write            # droit d'écrire dans le dépôt
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: pip install requests pandas      # bibliothèques utilisées par le script
+      - run: python scripts/build_static_reference.py
+      - name: Commit updated reference data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/gtfs_static/
+          git commit -m "Update static GTFS reference [automated]" || echo "Nothing to commit"
+          git push
