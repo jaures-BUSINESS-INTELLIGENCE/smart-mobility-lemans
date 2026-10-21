@@ -30,3 +30,18 @@ le texte « 1001 ». Ils ne correspondent pas, donc des lignes sont perdues ou l
 fusion échoue, sans que rien ne paraisse cassé. Lire chaque colonne comme du
 texte (dtype=str) donne le même type à tous les fichiers, donc la jointure
 fonctionne. -->
+## Reflection 4: per-route vs. per-stop logging
+A 12-week semester has 4 x 24 x 7 x 12 = 8,064 snapshots. Logging every
+stop update (about 5,000 per snapshot) would give about 40 million rows.
+Logging one row per route (about 30 routes) gives about 240,000 rows, which
+is roughly 170 times smaller and fine for Git. But with one row per route, it
+is harder to answer "which specific stops are delayed again and again?", or
+"do delays build up along a line?", because the stop-level detail is lost.
+<!-- Un semestre de 12 semaines compte 4 x 24 x 7 x 12 = 8 064 instantanés.
+Enregistrer chaque mise à jour d'arrêt (environ 5 000 par instantané) donnerait
+environ 40 millions de lignes. Enregistrer une ligne par ligne de bus (environ
+30 lignes) donne environ 240 000 lignes, soit environ 170 fois moins, ce qui
+convient à Git. Mais avec une ligne par ligne de bus, il est plus difficile de
+répondre à « quels arrêts précis sont en retard de façon répétée ? » ou
+« les retards s'accumulent-ils le long d'une ligne ? », car le détail par arrêt
+est perdu. -->
