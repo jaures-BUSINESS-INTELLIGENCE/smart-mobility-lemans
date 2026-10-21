@@ -14,6 +14,8 @@
   #alerts.none { border-color: #2c9c4a; background: #f0f8f2; }
   canvas { margin-top: 2rem; }
   #updated { color: #666; font-size: 0.85rem; }
+  table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; font-size: 0.85rem; }
+  th, td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
 </style>
 </head>
 <body>
@@ -22,6 +24,11 @@
   <div class="kpis" id="kpis">Loading...</div>
   <div id="alerts">Loading alerts...</div>
   <canvas id="delayChart" height="320"></canvas>
+
+  <h2>Scheduled supply vs. population, by commune</h2>
+  <p id="supplyMetric"></p>
+  <table id="supplyTable"><thead><tr><th>Commune</th><th>Population</th><th>Stops</th><th>Scheduled stop-visits / weekday</th><th>Per 1,000 residents</th></tr></thead><tbody></tbody></table>
+
   <p id="updated"></p>
 
 <script>
@@ -114,6 +121,16 @@ fetch('data/current_state.json')
       '<p>Could not load network status (' + err + '). Check that ' +
       '<code>docs/data/current_state.json</code> exists in the repo.</p>';
   });
+
+// Offre de transport par rapport à la population (fichier produit chaque mois)
+fetch('data/supply.json')
+  .then(r => r.json())
+  .then(s => {
+    document.getElementById('supplyMetric').textContent = s.metric_label;
+    document.querySelector('#supplyTable tbody').innerHTML = s.rows.map(r =>
+      `<tr><td>${r.commune}</td><td>${r.population}</td><td>${r.n_stops}</td><td>${r.stop_visits_weekday}</td><td>${r.visits_per_1000_residents}</td></tr>`).join('');
+  })
+  .catch(() => { document.getElementById('supplyMetric').textContent = 'Supply data not available yet.'; });
 </script>
 </body>
 </html>
