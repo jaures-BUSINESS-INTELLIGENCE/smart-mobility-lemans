@@ -60,3 +60,19 @@ J'utiliserais une échelle centrée sur zéro : vert pour à peu près à l'heur
 pour très en avance, avec la couleur la plus forte aux deux extrêmes. Avec
 cette règle, une ligne avec un grand retard négatif serait signalée comme un
 problème, alors que le graphique actuel la montre comme la meilleure ligne. -->
+## Reflection 6: static vs. real-time schedule
+A 15-minute schedule for the static reference would be wasteful: the data is
+the same, so we would download and process the same file again and again,
+create useless commits, and put load on the data provider for no new
+information. A monthly schedule for the real-time delays would make the
+real-time picture useless: delays last minutes or hours, so one snapshot per
+month would show one random moment and no pattern. The mismatch goes both
+ways: the schedule must follow how fast the source changes.
+<!-- Un calendrier de 15 minutes pour la référence statique serait un
+gaspillage : les données sont les mêmes, donc on téléchargerait et traiterait
+le même fichier encore et encore, avec des commits inutiles et de la charge
+pour le fournisseur, sans information nouvelle. Un calendrier mensuel pour les
+retards en temps réel rendrait l'image temps réel inutile : les retards durent
+des minutes ou des heures, donc un instantané par mois montrerait un moment au
+hasard et aucun motif. L'erreur existe dans les deux sens : le calendrier doit
+suivre la vitesse à laquelle la source change. -->
