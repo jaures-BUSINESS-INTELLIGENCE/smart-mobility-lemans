@@ -92,3 +92,17 @@ sur le site de SETRAM ou par bon sens, par exemple une vraie perturbation ou
 rien de particulier.] Ma meilleure hypothèse est qu'il s'agit d'un artefact de
 données dû à un très petit échantillon (un seul trajet), pas d'un vrai problème
 du réseau, car une moyenne sur un seul bus n'est pas fiable. -->
+## Reflection 8: where population misleads as a demand proxy
+A small commune can have a low population but high transport demand if it
+hosts a big employer, a hospital, a school or a shopping area: many people
+come from outside every day. For example, a commune with a large business
+park has few residents but many workers who use the bus. The reverse also
+happens: a commune with many residents who all have a car, or many elderly
+people who travel little, can have a high population but low demand.
+<!-- Une petite commune peut avoir peu d'habitants mais une forte demande de
+transport si elle accueille un gros employeur, un hôpital, une école ou une zone
+commerciale : beaucoup de gens viennent de l'extérieur chaque jour. Par exemple,
+une commune avec un grand parc d'activités a peu de résidents mais beaucoup de
+salariés qui prennent le bus. L'inverse existe aussi : une commune avec beaucoup
+d'habitants qui ont tous une voiture, ou beaucoup de personnes âgées qui se
+déplacent peu, peut avoir une forte population mais une faible demande. -->
