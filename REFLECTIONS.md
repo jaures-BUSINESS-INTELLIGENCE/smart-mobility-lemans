@@ -106,3 +106,68 @@ une commune avec un grand parc d'activités a peu de résidents mais beaucoup de
 salariés qui prennent le bus. L'inverse existe aussi : une commune avec beaucoup
 d'habitants qui ont tous une voiture, ou beaucoup de personnes âgées qui se
 déplacent peu, peut avoir une forte population mais une faible demande. -->
+## Reflection 9: supply metric and a commune where it misleads
+My metric is: scheduled stop-visits per weekday per 1,000 residents (the sum
+of daily trips over all stops of a commune, divided by its population, times
+1,000). In my real output, La-Chapelle-Saint-Aubin is first with about 1,010
+visits per 1,000 residents, with 53 stops for only 2,319 residents, while Le
+Mans (148,876 residents) is in the middle with about 154. This looks wrong. I
+checked the stop names in stops_frequency.csv: many of the 53 stops have names
+like "Zone Industrielle Nord", "Université", "Citroën", "Panhard" or "Louis
+Delage", which look like places in Le Mans, and only "Église St-Aubin" clearly
+belongs to the commune. The reason is that each stop is assigned to the commune
+with the nearest center, not to the commune where it really is, so stops from
+the north of Le Mans are counted in small neighbouring communes. The ranking
+mostly measures this assignment method, not real accessibility for residents.
+<!-- Ma mesure est : passages prévus un jour de semaine pour 1 000 habitants (la
+somme des trajets quotidiens sur tous les arrêts d'une commune, divisée par sa
+population, fois 1 000). Dans mes vrais résultats, La-Chapelle-Saint-Aubin est
+première avec environ 1 010 passages pour 1 000 habitants, avec 53 arrêts pour
+seulement 2 319 habitants, alors que Le Mans (148 876 habitants) est au milieu
+avec environ 154. Cela semble faux. J'ai vérifié les noms d'arrêts dans
+stops_frequency.csv : beaucoup des 53 arrêts ont des noms comme « Zone
+Industrielle Nord », « Université », « Citroën », « Panhard » ou « Louis
+Delage », qui ressemblent à des lieux du Mans, et seul « Église St-Aubin »
+appartient clairement à la commune. La raison est que chaque arrêt est rattaché
+à la commune dont le centre est le plus proche, pas à la commune où il se
+trouve vraiment, donc des arrêts du nord du Mans sont comptés dans de petites
+communes voisines. Le classement mesure surtout cette méthode de rattachement,
+pas l'accessibilité réelle pour les habitants. -->
+## Reflection 10: aggregating stop-level delays without a huge file
+I would not keep every stop update. Instead I would keep one row per stop and
+per day, with the number of observations, the average delay, the 90th
+percentile of the delay, and the share of observations more than 5 minutes
+late. With about 800 stops, this gives about 800 rows per day, so roughly
+70,000 rows for a 12-week semester instead of 40 million. This is small
+enough for Git and still answers "which stops are repeatedly delayed?". I
+could also keep the raw detail only for the few stops that cross a delay
+threshold.
+<!-- Je ne garderais pas chaque mise à jour d'arrêt. Je garderais plutôt une
+ligne par arrêt et par jour, avec le nombre d'observations, le retard moyen, le
+90e percentile du retard et la part des observations en retard de plus de 5
+minutes. Avec environ 800 arrêts, cela donne environ 800 lignes par jour, donc
+environ 70 000 lignes pour un semestre de 12 semaines au lieu de 40 millions.
+C'est assez petit pour Git et cela répond encore à « quels arrêts sont en retard
+de façon répétée ? ». Je pourrais aussi garder le détail brut seulement pour les
+quelques arrêts qui dépassent un seuil de retard. -->
+## Reflection 11 (closing): back to Reflection 1
+In Reflection 1 I guessed that "where is the service thin compared to the
+population" would be easy and that delays and predictions would be hard. This
+was partly right. The supply-vs-population question was answerable today, but
+it needed real judgment: my first result was misleading because of how stops
+are assigned to communes, and population is only a proxy for demand. The
+question about recurring delays needs weeks of history: after a few hours I
+have only two snapshots, and some routes (like T1, with one bus) are based on
+a very small sample. Predicting delays needs even more history and a clear
+definition of what is predicted.
+<!-- Dans la réflexion 1, j'avais deviné que « où le service est-il faible par
+rapport à la population » serait facile et que les retards et les prévisions
+seraient difficiles. C'était en partie juste. La question offre/population
+était réalisable aujourd'hui, mais elle a demandé un vrai jugement : mon premier
+résultat était trompeur à cause de la façon dont les arrêts sont rattachés aux
+communes, et la population n'est qu'un substitut de la demande. La question sur
+les retards récurrents demande des semaines d'historique : après quelques
+heures, je n'ai que deux instantanés, et certaines lignes (comme T1, avec un
+seul bus) reposent sur un très petit échantillon. Prévoir les retards demande
+encore plus d'historique et une définition claire de ce qu'on prévoit. -->
+
