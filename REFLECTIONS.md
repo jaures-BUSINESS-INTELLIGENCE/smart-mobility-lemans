@@ -8,6 +8,7 @@ est-il faible par rapport à la population », car elle utilise un horaire fixe.
 Elle ne répondra pas bien à « quand y a-t-il des retards répétés » ni à
 « que peut-on prévoir », car il faut des semaines de données en temps réel
 qui n'existent pas encore. -->
+
 ## Reflection 2: why the static feed is not refreshed every 15 minutes
 The schedule only changes when SETRAM publishes a new feed, a few times a
 year. Downloading and processing it every 15 minutes would give the same
@@ -30,6 +31,7 @@ le texte « 1001 ». Ils ne correspondent pas, donc des lignes sont perdues ou l
 fusion échoue, sans que rien ne paraisse cassé. Lire chaque colonne comme du
 texte (dtype=str) donne le même type à tous les fichiers, donc la jointure
 fonctionne. -->
+
 ## Reflection 4: per-route vs. per-stop logging
 A 12-week semester has 4 x 24 x 7 x 12 = 8,064 snapshots. Logging every
 stop update (about 5,000 per snapshot) would give about 40 million rows.
@@ -37,6 +39,9 @@ Logging one row per route (about 30 routes) gives about 240,000 rows, which
 is roughly 170 times smaller and fine for Git. But with one row per route, it
 is harder to answer "which specific stops are delayed again and again?", or
 "do delays build up along a line?", because the stop-level detail is lost.
+In practice, GitHub ran the workflow much less often than every 15 minutes
+(67 runs so far, with gaps of 3 to 10 hours), so the real volume is smaller,
+but the comparison between the two designs stays the same.
 <!-- Un semestre de 12 semaines compte 4 x 24 x 7 x 12 = 8 064 instantanés.
 Enregistrer chaque mise à jour d'arrêt (environ 5 000 par instantané) donnerait
 environ 40 millions de lignes. Enregistrer une ligne par ligne de bus (environ
@@ -44,7 +49,11 @@ environ 40 millions de lignes. Enregistrer une ligne par ligne de bus (environ
 convient à Git. Mais avec une ligne par ligne de bus, il est plus difficile de
 répondre à « quels arrêts précis sont en retard de façon répétée ? » ou
 « les retards s'accumulent-ils le long d'une ligne ? », car le détail par arrêt
-est perdu. -->
+est perdu. En pratique, GitHub a exécuté le workflow bien moins souvent que
+toutes les 15 minutes (67 exécutions jusqu'ici, avec des écarts de 3 à 10
+heures), donc le volume réel est plus petit, mais la comparaison entre les deux
+conceptions reste la même. -->
+
 ## Reflection 5: color encoding of delays
 The current rule shows a very early bus as green, but a bus that leaves early
 can strand a waiting passenger just like a late bus. I would use a scale
@@ -60,6 +69,7 @@ J'utiliserais une échelle centrée sur zéro : vert pour à peu près à l'heur
 pour très en avance, avec la couleur la plus forte aux deux extrêmes. Avec
 cette règle, une ligne avec un grand retard négatif serait signalée comme un
 problème, alors que le graphique actuel la montre comme la meilleure ligne. -->
+
 ## Reflection 6: static vs. real-time schedule
 A 15-minute schedule for the static reference would be wasteful: the data is
 the same, so we would download and process the same file again and again,
@@ -67,7 +77,9 @@ create useless commits, and put load on the data provider for no new
 information. A monthly schedule for the real-time delays would make the
 real-time picture useless: delays last minutes or hours, so one snapshot per
 month would show one random moment and no pattern. The mismatch goes both
-ways: the schedule must follow how fast the source changes.
+ways: the schedule must follow how fast the source changes. There is a
+third limit: the platform also has to keep the schedule. GitHub did not run
+my 15-minute schedule on time, so the real-time history is irregular.
 <!-- Un calendrier de 15 minutes pour la référence statique serait un
 gaspillage : les données sont les mêmes, donc on téléchargerait et traiterait
 le même fichier encore et encore, avec des commits inutiles et de la charge
@@ -75,7 +87,11 @@ pour le fournisseur, sans information nouvelle. Un calendrier mensuel pour les
 retards en temps réel rendrait l'image temps réel inutile : les retards durent
 des minutes ou des heures, donc un instantané par mois montrerait un moment au
 hasard et aucun motif. L'erreur existe dans les deux sens : le calendrier doit
-suivre la vitesse à laquelle la source change. -->
+suivre la vitesse à laquelle la source change. Il y a une troisième limite : la
+plateforme doit aussi respecter le calendrier. GitHub n'a pas exécuté mon
+calendrier de 15 minutes à l'heure, donc l'historique temps réel est
+irrégulier. -->
+
 ## Reflection 7: sanity check against reality
 I looked at the route with the largest average delay on the dashboard: line T1
 at about 311 seconds. Only one trip was observed for this line, so the average
@@ -102,6 +118,7 @@ résultats de recherche ne montraient que d'anciens articles). Ma meilleure
 hypothèse est qu'il s'agit d'un artefact de données (un trajet figé ou un bus
 bloqué dans le flux) reposant sur un très petit échantillon, pas d'un vrai
 problème du réseau. -->
+
 ## Reflection 8: where population misleads as a demand proxy
 A small commune can have a low population but high transport demand if it
 hosts a big employer, a hospital, a school or a shopping area: many people
@@ -116,6 +133,7 @@ une commune avec un grand parc d'activités a peu de résidents mais beaucoup de
 salariés qui prennent le bus. L'inverse existe aussi : une commune avec beaucoup
 d'habitants qui ont tous une voiture, ou beaucoup de personnes âgées qui se
 déplacent peu, peut avoir une forte population mais une faible demande. -->
+
 ## Reflection 9: supply metric and a commune where it misleads
 My metric is: scheduled stop-visits per weekday per 1,000 residents (the sum
 of daily trips over all stops of a commune, divided by its population, times
@@ -143,6 +161,7 @@ appartient clairement à la commune. La raison est que chaque arrêt est rattach
 trouve vraiment, donc des arrêts du nord du Mans sont comptés dans de petites
 communes voisines. Le classement mesure surtout cette méthode de rattachement,
 pas l'accessibilité réelle pour les habitants. -->
+
 ## Reflection 10: aggregating stop-level delays without a huge file
 I would not keep every stop update. Instead I would keep one row per stop and
 per day, with the number of observations, the average delay, the 90th
@@ -160,24 +179,27 @@ environ 70 000 lignes pour un semestre de 12 semaines au lieu de 40 millions.
 C'est assez petit pour Git et cela répond encore à « quels arrêts sont en retard
 de façon répétée ? ». Je pourrais aussi garder le détail brut seulement pour les
 quelques arrêts qui dépassent un seuil de retard. -->
+
 ## Reflection 11 (closing): back to Reflection 1
 In Reflection 1 I guessed that "where is the service thin compared to the
 population" would be easy and that delays and predictions would be hard. This
 was partly right. The supply-vs-population question was answerable today, but
 it needed real judgment: my first result was misleading because of how stops
 are assigned to communes, and population is only a proxy for demand. The
-question about recurring delays needs weeks of history: after a few hours I
-have only two snapshots, and some routes (like T1, with one bus) are based on
-a very small sample. Predicting delays needs even more history and a clear
-definition of what is predicted.
+question about recurring delays needs weeks of history: I now have 67
+snapshots, but GitHub ran them irregularly (gaps of 3 to 10 hours, many at
+night), so I still cannot see reliable time-of-day patterns, and some routes
+(like T1, with one bus) are based on a very small sample. Predicting delays
+needs even more history and a clear definition of what is predicted.
 <!-- Dans la réflexion 1, j'avais deviné que « où le service est-il faible par
 rapport à la population » serait facile et que les retards et les prévisions
 seraient difficiles. C'était en partie juste. La question offre/population
 était réalisable aujourd'hui, mais elle a demandé un vrai jugement : mon premier
 résultat était trompeur à cause de la façon dont les arrêts sont rattachés aux
 communes, et la population n'est qu'un substitut de la demande. La question sur
-les retards récurrents demande des semaines d'historique : après quelques
-heures, je n'ai que deux instantanés, et certaines lignes (comme T1, avec un
-seul bus) reposent sur un très petit échantillon. Prévoir les retards demande
-encore plus d'historique et une définition claire de ce qu'on prévoit. -->
-
+les retards récurrents demande des semaines d'historique : j'ai maintenant 67
+instantanés, mais GitHub les a exécutés de façon irrégulière (écarts de 3 à 10
+heures, souvent la nuit), donc je ne vois toujours pas de motifs fiables selon
+l'heure de la journée, et certaines lignes (comme T1, avec un seul bus) reposent
+sur un très petit échantillon. Prévoir les retards demande encore plus
+d'historique et une définition claire de ce qu'on prévoit. -->
